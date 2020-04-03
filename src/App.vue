@@ -1,28 +1,131 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="primaryView">
+      <img class="app-logo" src="./assets/jmi-logo.png" />
+      <form @submit.prevent="handleSubmit">
+        <ul>
+          <li>
+            <input type="text" v-model="insuredName" placeholder="Insured Name" />
+          </li>
+          <li>
+            <input type="text" v-model="insuredItem" placeholder="Insured Item" />
+          </li>
+          <li>
+            <input
+              type="text"
+              name="insured_value"
+              v-model="insuredValue"
+              placeholder="Insured Item Value"
+            />
+          </li>
+          <li>
+            <input
+              type="text"
+              v-model="insuredIncome"
+              v-if="insuredValue >= 10000"
+              placeholder="Annual Income"
+            />
+          </li>
+          <li>
+            <button type="submit" class="open">Submit</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+    <!-- <div class="secondaryView">Hello World</div> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "app",
+  data() {
+    return {
+      insuredName: "",
+      insuredItem: "",
+      insuredValue: "",
+      insuredIncome: "",
+      thankYou: "Thank you"
+    };
+  },
+  methods: {
+    handleSubmit() {
+      console.log({
+        greet: this.thankYou,
+        name: this.insuredName,
+        item: this.insuredItem,
+        value: this.insuredValue,
+        income: this.insuredIncome
+      });
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+.primaryView {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  background: whitesmoke;
+  justify-items: stretch;
+  font-family: "Avenir";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.4;
+}
+
+.secondaryView {
+}
+
+.app-logo {
+  position: absolute;
+  width: 200px;
+  left: 50%;
+  right: 50%;
+  margin-left: -100px;
+  margin-right: -100px;
+  margin-top: 20px;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+}
+
+input,
+button {
+  font: inherit;
+  border: 0;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
+form {
+  display: flex;
+  grid-column: 2;
+}
+
+input {
+  flex-grow: 1;
+  padding: 0.8em 1.5em;
+}
+
+button {
+  padding: 0.5em 0.75em;
+  background: #159ad7;
+  width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: inline-block;
 }
 </style>
