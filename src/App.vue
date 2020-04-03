@@ -79,7 +79,7 @@ export default {
   place-items: center;
   background: whitesmoke;
   justify-items: stretch;
-  font-family: "Avenir";
+  font-family: 'Avenir';
   font-weight: normal;
   font-style: normal;
   line-height: 1.4;
