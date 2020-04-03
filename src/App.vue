@@ -2,27 +2,27 @@
   <div id="app">
     <div class="primaryView">
       <img class="app-logo" src="./assets/jmi-logo.png" />
-      <form @submit.prevent="handleSubmit">
+      <form v-if="!formIsSubmitted" @submit.prevent="handleSubmit">
         <ul>
           <li>
-            <input type="text" v-model="insuredName" placeholder="Insured Name" />
+            <input type="text" v-model="form.insuredName" placeholder="Insured Name" />
           </li>
           <li>
-            <input type="text" v-model="insuredItem" placeholder="Insured Item" />
+            <input type="text" v-model="form.insuredItem" placeholder="Insured Item" />
           </li>
           <li>
             <input
               type="text"
               name="insured_value"
-              v-model="insuredValue"
+              v-model="form.insuredValue"
               placeholder="Insured Item Value"
             />
           </li>
           <li>
             <input
               type="text"
-              v-model="insuredIncome"
-              v-if="insuredValue >= 10000"
+              v-model="form.insuredIncome"
+              v-if="form.insuredValue >= 10000"
               placeholder="Annual Income"
             />
           </li>
