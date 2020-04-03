@@ -1,7 +1,7 @@
 # vue-form-web-component
 
 Created with
-`vue create vue-web-component-project`
+`vue create vue-form-web-component`
 
 - [Vue Entry Files](https://cli.vuejs.org/guide/build-targets.html#vue-vs-js-ts-entry-files)
 - [Vue Web Components](https://vuejsdevelopers.com/2018/05/21/vue-js-web-component/)
