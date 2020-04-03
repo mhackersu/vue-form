@@ -1,5 +1,8 @@
 # vue-form-web-component
 
+Created with
+`vue create vue-web-component-project`
+
 ## Project setup
 ```
 npm install
