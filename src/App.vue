@@ -38,24 +38,32 @@
 
 <script>
 export default {
-  name: "app",
+  name: 'app',
   data() {
     return {
-      insuredName: "",
-      insuredItem: "",
-      insuredValue: "",
-      insuredIncome: "",
-      thankYou: "Thank you"
+      formIsSubmitted: false,
+      // insuredName: '',
+      // insuredItem: '',
+      // insuredValue: '',
+      // insuredIncome: '',
+      // submitMessage: 'Thank you!',
+      form: {
+        insuredName: '',
+        insuredItem: '',
+        insuredValue: '',
+        insuredIncome: '',
+        submitMessage: 'Thank you!'
+      }
     };
   },
   methods: {
     handleSubmit() {
       console.log({
-        greet: this.thankYou,
-        name: this.insuredName,
-        item: this.insuredItem,
-        value: this.insuredValue,
-        income: this.insuredIncome
+        greet: this.form.submitMessage,
+        name: this.form.insuredName,
+        item: this.form.insuredItem,
+        value: this.form.insuredValue,
+        income: this.form.insuredIncome
       });
     }
   }
