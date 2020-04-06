@@ -1,5 +1,4 @@
 <template>
-  <div id="register-form">
     <div class="primaryView" v-if="!isSubmitted">
       <img class="app-logo" src="./assets/jmi-logo.png" />
       <form v-if="!formIsSubmitted" @submit.prevent="handleSubmit">
@@ -57,7 +56,6 @@
         </ul>
       </form>
     </div>
-  </div>
 </template>
 
 <script>
