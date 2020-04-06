@@ -1,28 +1,36 @@
 <template>
   <div id="app">
-    <div class="primaryView">
+    <div class="primaryView" v-if="!isSubmitted">
       <img class="app-logo" src="./assets/jmi-logo.png" />
       <form v-if="!formIsSubmitted" @submit.prevent="handleSubmit">
         <ul>
           <li>
-            <input type="text" v-model="form.insuredName" placeholder="Insured Name" />
-          </li>
-          <li>
-            <input type="text" v-model="form.insuredItem" placeholder="Insured Item" />
+            <input
+              type="text"
+              v-model="form.insuredName"
+              placeholder="Insured Name"
+            />
           </li>
           <li>
             <input
+              v-model="form.insuredItem"
+              type="text"
+              placeholder="Insured Item"
+            />
+          </li>
+          <li>
+            <input
+              v-model="form.insuredValue"
               type="text"
               name="insured_value"
-              v-model="form.insuredValue"
               placeholder="Insured Item Value"
             />
           </li>
           <li>
             <input
-              type="text"
-              v-model="form.insuredIncome"
               v-if="form.insuredValue >= 10000"
+              v-model="form.insuredIncome"
+              type="text"
               placeholder="Annual Income"
             />
           </li>
@@ -32,32 +40,52 @@
         </ul>
       </form>
     </div>
-    <!-- <div class="secondaryView">Hello World</div> -->
+    <div class="secondaryView" v-else>
+      <img class="app-logo" src="./assets/jmi-logo.png" />
+      <form @submit.prevent="handleReset">
+        <ul>
+          <li>
+            <input type="text" placeholder="Items you submitted:" />
+          </li>
+          <li>
+            <input type="text" v-model="form.insuredName" />
+          </li>
+          <li>
+            <input v-model="form.insuredItem" type="text" />
+          </li>
+          <li>
+            <input v-model="form.insuredValue" type="text" />
+          </li>
+          <li>
+            <input v-model="form.insuredIncome" type="text" />
+          </li>
+          <li>
+            <input v-model="form.submitMessage" type="text" />
+          </li>
+        </ul>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
+  name: "app",
   data() {
     return {
-      formIsSubmitted: false,
-      // insuredName: '',
-      // insuredItem: '',
-      // insuredValue: '',
-      // insuredIncome: '',
-      // submitMessage: 'Thank you!',
+      isSubmitted: false,
       form: {
-        insuredName: '',
-        insuredItem: '',
-        insuredValue: '',
-        insuredIncome: '',
-        submitMessage: 'Thank you!'
+        insuredName: "",
+        insuredItem: "",
+        insuredValue: "",
+        insuredIncome: "",
+        submitMessage: "Thank you!"
       }
     };
   },
   methods: {
     handleSubmit() {
+      this.submitSuccess();
       console.log({
         greet: this.form.submitMessage,
         name: this.form.insuredName,
@@ -65,13 +93,17 @@ export default {
         value: this.form.insuredValue,
         income: this.form.insuredIncome
       });
+    },
+    submitSuccess() {
+      this.isSubmitted = true;
     }
   }
 };
 </script>
 
 <style>
-.primaryView {
+.primaryView,
+.secondaryView {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: grid;
@@ -79,13 +111,10 @@ export default {
   place-items: center;
   background: whitesmoke;
   justify-items: stretch;
-  font-family: 'Avenir';
+  font-family: "Avenir";
   font-weight: normal;
   font-style: normal;
   line-height: 1.4;
-}
-
-.secondaryView {
 }
 
 .app-logo {
