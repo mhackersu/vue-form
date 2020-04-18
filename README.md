@@ -6,6 +6,9 @@ Created with
 - [Vue Entry Files](https://cli.vuejs.org/guide/build-targets.html#vue-vs-js-ts-entry-files)
 - [Vue Web Components](https://vuejsdevelopers.com/2018/05/21/vue-js-web-component/)
 
+This source was used as a guide for the tutorial:
+https://auralinna.blog/post/2018/how-to-build-a-complete-form-with-vue-js/
+
 ## Project setup
 ```
 npm install
